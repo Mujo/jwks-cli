@@ -1,0 +1,36 @@
+{
+	"name": "jwks-cli",
+	"version": "0.1.5",
+	"description": "generate jwks from a signing certificate",
+	"main": "index.js",
+	"license": "ISC",
+	"scripts": {
+		"start": "node --enable-source-maps dist",
+		"lint": "eslint src --ext .ts,.js --fix",
+		"relink": "cd dist && npm unlink && npm link && cd ..",
+		"build": "rm -rf dist && tsc && npm run cp-files",
+		"cp-files": "npm run cp-pkg && npm run cp-rdm",
+		"cp-pkg": "cp ./package.json ./dist",
+		"cp-rdm": "cp ./README.md ./dist",
+		"watch": "tsc-watch --onSuccess \"npm run cp-pkg\"",
+		"dev": "tsc-watch --onSuccess \"npm start\"",
+		"pub": "npm run build && cd dist && npm publish && cd .."
+	},
+	"author": "Mujo",
+	"devDependencies": {
+		"@types/minimist": "^1.2.1",
+		"@types/node": "^15.14.2",
+		"@typescript-eslint/eslint-plugin": "^4.29.1",
+		"@typescript-eslint/parser": "^4.29.1",
+		"eslint": "^7.32.0",
+		"tsc-watch": "^4.4.0",
+		"typescript": "^4.3.2"
+	},
+	"dependencies": {
+		"jose": "^4.6.1",
+		"minimist": "^1.2.5"
+	},
+	"bin": {
+		"jwks": "index.js"
+	}
+}
