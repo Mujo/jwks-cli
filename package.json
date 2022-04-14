@@ -1,9 +1,9 @@
 {
 	"name": "jwks-cli",
-	"version": "0.1.5",
-	"description": "generate jwks from a signing certificate",
+	"version": "0.1.6",
+  "description": "jwks-cli is a cli tool to generate a JWKS from a signing certificate, or generate a private certificate from a jwks.",
 	"main": "index.js",
-	"license": "ISC",
+	"license": "MIT",
 	"scripts": {
 		"start": "node --enable-source-maps dist",
 		"lint": "eslint src --ext .ts,.js --fix",
@@ -17,6 +17,14 @@
 		"pub": "npm run build && cd dist && npm publish && cd .."
 	},
 	"author": "Mujo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mujo/jwks-cli.git"
+  },
+	  "bugs": {
+    "url": "https://github.com/Mujo/jwks-cli/issues"
+  },
+  "homepage": "https://github.com/Mujo/jwks-cli#readme",
 	"devDependencies": {
 		"@types/minimist": "^1.2.1",
 		"@types/node": "^15.14.2",
