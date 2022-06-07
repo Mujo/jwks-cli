@@ -1,6 +1,6 @@
 # jwks-cli 
 
-___`jwks-cli` is a cli tool to generate a `JWKS` from a signing certificate, or generate a private certificate from a jwks.___
+___`jwks-cli` is a cli tool to generate a `JWKS` from a sign certificate, or generate a private certificate from a jwks.___
 
 _this project was created to help the initial configuration of `openid FAPI certification`._
 
@@ -12,7 +12,7 @@ npm i -g jwks-cli
 ```
 
 ## Usages
-_using default values (`./signing.key` and `./signing.pem`):_
+_using default values (`./sign.key` and `./sign.pem`):_
 ```bash
 jwks
 ```
