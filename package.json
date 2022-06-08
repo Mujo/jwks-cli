@@ -1,6 +1,6 @@
 {
 	"name": "jwks-cli",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "jwks-cli is a cli tool to generate a JWKS from a signing certificate, or generate a private certificate from a jwks.",
 	"main": "index.js",
 	"license": "MIT",
