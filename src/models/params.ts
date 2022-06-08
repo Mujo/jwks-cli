@@ -3,4 +3,5 @@ export interface Params {
 	cert: string
 	jwks: string
 	make: number
+	all: string
 }
