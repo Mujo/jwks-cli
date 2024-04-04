@@ -16,8 +16,8 @@ const args = minimist(process.argv.slice(2))
 const main = async () => {
 	try {
 		const config: Params = {
-			cert: args.cert || args.c || './sign.pem',
-			key: args.key || args.k || './sign.key',
+			cert: args.cert || args.c,
+			key: args.key || args.k,
 			jwks: args.jwks || args.j,
 			make: args.make || args.m,
 			all: args.all || args.a,
@@ -39,7 +39,7 @@ const main = async () => {
 		}
 
 		if (config.jwks) {
-			if (config.out.includes('pub')) {
+			if (config.out?.includes('pub')) {
 				const x509: string = await getX509(config.jwks)
 				console.log(x509)
 				return
@@ -51,7 +51,7 @@ const main = async () => {
 		}
 
 		if (config.all) {
-			if (config.out.includes('pub')) {
+			if (config.out?.includes('pub')) {
 				const jwks: JWKS = await getPubJwks(config.all)
 				console.log(JSON.stringify(jwks, null, 2))
 				return
@@ -67,7 +67,7 @@ const main = async () => {
 		}
 
 		if (config.cert || config.key) {
-			const jwk: JWK = await getJwk(config.cert, config.key)
+			const jwk: JWK = await getJwk(config.cert, config.out?.includes('pub') ? undefined : config.key)
 			if (config.out?.includes('jwks')) {
 				const jwks: JWKS = { keys: [jwk] }
 				console.log(JSON.stringify(jwks, null, 2))
@@ -78,7 +78,7 @@ const main = async () => {
 		}
 
 	} catch (err) {
-		console.error(err.message)
+		console.error(err)
 	}
 }
 main()

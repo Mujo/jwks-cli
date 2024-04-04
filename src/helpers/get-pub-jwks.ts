@@ -1,21 +1,22 @@
-import fs from 'fs'
+import { readFileSync, readdirSync } from 'fs'
 import path from 'path'
 import { JWKS } from '../models/jwks'
-import { Params } from '../models/params'
 import { makeJwk } from './pkcs8-to-jwk'
 
 export const getPubJwks = async (all: string): Promise<JWKS> => {
 	if (typeof all === 'boolean') {
 		all = ''
 	}
-	const pemFiles = fs.readdirSync(path.join(process.cwd(), all))
+	const dir = path.resolve(all || process.cwd())
+	const pemFiles = readdirSync(dir)
 		.filter(f => path.extname(f).toLowerCase() === '.pem')
 
 	const jwks: JWKS = { keys: [] }
 
 	for (const pemFile of pemFiles) {
-		const signingCert = fs.readFileSync(pemFile).toString()
-		const jwk = await makeJwk(signingCert)
+		const fullPath = path.join(dir, pemFile)
+		const x509 = readFileSync(fullPath).toString()
+		const jwk = await makeJwk(x509)
 		jwks.keys.push(jwk)
 	}
 	return jwks

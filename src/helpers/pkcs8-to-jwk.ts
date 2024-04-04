@@ -1,7 +1,10 @@
 import { JWK, exportJWK, importPKCS8, importX509 } from 'jose'
 import { thumbprint } from './thumbprint'
 
-export const makeJwk = async (x509: string, pkcs8?: string): Promise<JWK> => {
+export const makeJwk = async (x509?: string, pkcs8?: string): Promise<JWK> => {
+	if (!x509) {
+		return {}
+	}
 	const key = pkcs8 ? await importPKCS8(pkcs8, 'PS256') : await importX509(x509, 'PS256')
 	const jwk = await exportJWK(key)
 
