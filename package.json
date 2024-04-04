@@ -1,6 +1,6 @@
 {
 	"name": "jwks-cli",
-	"version": "0.4.1",
+	"version": "0.4.2",
 	"description": "A cli tool to help conversion between JWK, JWKS, certificates, public keys and private keys.",
 	"tags": [
 		"JWKS",
