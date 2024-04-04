@@ -1,28 +1,22 @@
 # jwks-cli 
 
-___`jwks-cli` is a cli tool to generate a `JWKS` from a sign certificate, or generate a private certificate from a jwks.___
+___This is a cli tool to convert certificates and keys into `JWK` (json web key) or `JWKS` (json web key set) and to convert back to private and public keys.___
 
-_this project was created to help the initial configuration of `openid FAPI certification`._
+_This was created to help the setup of the `Open Finance Brasil` security and conformance tests, and to help the configuration of the id providers and fapi clients._
 
 
 ## Install instructions
 _install `jwks-cli` globally:_
-```
+```bash
 npm i -g jwks-cli
 ```
 
-## Usages
-_using default values (`./sign.key` and `./sign.pem`):_
+## Usage
+_check command help for usage:_
 ```bash
-jwks
+jwks -h
 ```
-
-_using other paths:_
+or
 ```bash
-jwks  --cert ./my-cert.pem --key ./my-cert.key
-```
-
-_generating certificate from jwks:_
-```bash
-jwks  --jwks ./my-jwks.json
+jwks --help
 ```
