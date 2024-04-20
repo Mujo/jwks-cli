@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'fs'
 import path from 'path'
 import { JWKS } from '../models/jwks'
-import { makeJwk } from './pkcs8-to-jwk'
+import { makeJwk } from './make-jwk'
 
 export const getPubJwks = async (all: string): Promise<JWKS> => {
 	if (typeof all === 'boolean') {
@@ -17,7 +17,9 @@ export const getPubJwks = async (all: string): Promise<JWKS> => {
 		const fullPath = path.join(dir, pemFile)
 		const x509 = readFileSync(fullPath).toString()
 		const jwk = await makeJwk(x509)
-		jwks.keys.push(jwk)
+		if (jwk) {
+			jwks.keys.push(jwk)
+		}
 	}
 	return jwks
 }

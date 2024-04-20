@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'fs'
 import { JWK } from 'jose'
 import path from 'path'
-import { makeJwk } from './pkcs8-to-jwk'
+import { makeJwk } from './make-jwk'
 
 export const getJwk = async (certPath: string, keyPath: string): Promise<JWK> => {
 
