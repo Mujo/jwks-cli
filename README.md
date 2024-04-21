@@ -25,15 +25,18 @@ Options:
   -o, --out <type>   Output type: jwks, public (pub), private (priv)
   -j, --jwks <path>  Path to the JWKS file
   -m, --make <num>   Make <num> self signed certificates with keys
-  -a, --all          Make jwks from all .pem and .key pairs in current (or passed) folder
+  -a, --all <folder> Make jwks from all .pem and .key pairs in folder
+  -v, --version      Show version number
   -h, --help         Show this help
 Examples:
   $ jwks -c cert.pem -k cert.key
   $ jwks -c cert.pem -k cert.key -o pub
   $ jwks -c cert.pem -k cert.key -o pub,jwks
   $ jwks -a
+  $ jwks -a ./certs
   $ jwks -a -o pub
   $ jwks -j jwks.json
+  $ jwks -j jwks.json -o pub
   $ jwks -j jwks.json -o pub,priv
   $ jwks -m 3
 ```
